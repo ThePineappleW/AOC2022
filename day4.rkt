@@ -44,4 +44,3 @@
 (define (string->range str)
   (make-range* (string->number (first (string-split str "-")))
               (string->number (second (string-split str "-")))))
-
