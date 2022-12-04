@@ -11,11 +11,8 @@
 
 ;; Pair-of Range --> Bool
 (define (contains-complete pr)
-  (or
-   (and (>= (range*-lo (first pr)) (range*-lo (second pr)))
-        (<= (range*-hi (first pr)) (range*-hi (second pr))))
-   (and (>= (range*-lo (second pr)) (range*-lo (first pr)))
-        (<= (range*-hi (second pr)) (range*-hi (first pr))))))
+  (or (<= (range*-lo (first pr)) (range*-lo (second pr)) (range*-hi (second pr)) (range*-hi (first pr)))
+      (<= (range*-lo (second pr)) (range*-lo (first pr)) (range*-hi (first pr)) (range*-hi (second pr)))))
 
 ;; Pair-of Range --> Bool
 (define (overlap pr)
