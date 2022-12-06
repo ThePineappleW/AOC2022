@@ -4,6 +4,7 @@
 (require racket/base)
 (require racket/list)
 
+;; String --> Number
 (define (find-first-index str)
   (find-first-unique (string->list str) 0))
 
@@ -12,7 +13,7 @@
   (andmap (λ(c) (= 1 (length (filter (λ(x) (char=? x c)) loc)))) loc))
 
 ;; String --> Num
-(define (find-first-unique loc start)
-  (cond [(<= (length loc) 13) -1]
-        [(all-unique? (take loc 14)) (+ 14 start)]
+(define (find-first-unique loc start len)
+  (cond [(<= (length loc) (sub1 len)) -1]
+        [(all-unique? (take loc len)) (+ len start)]
         [else (find-first-unique (rest loc) (add1 start))]))
