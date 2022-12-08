@@ -36,6 +36,11 @@
           (first (parser-state-hist ps))
           (parser-state-tree ps)
           (rest* (parser-state-hist ps)))]
+        [(string=? arg "\\")
+         (make-parser-state
+          "\\")
+         (parser-state-tree ps)
+         '()]
         [else (make-parser-state
                (string-append (parser-state-cur ps) arg)
                (parser-state-tree ps)
